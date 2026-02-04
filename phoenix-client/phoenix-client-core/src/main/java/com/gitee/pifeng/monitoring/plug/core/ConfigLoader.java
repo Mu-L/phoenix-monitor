@@ -418,6 +418,8 @@ public class ConfigLoader {
         if (StringUtils.isBlank(serverUrl)) {
             throw new NotFoundConfigParamException("监控程序找不到监控服务端(代理端)HTTP(S) URL配置！");
         }
+        // 如果以 / 结尾，则去掉末尾的 /
+        serverUrl = StringUtils.removeEnd(serverUrl, "/");
         int minTimeout = 0;
         if (connectTimeout <= minTimeout) {
             throw new ErrorConfigParamException("HTTP(S)连接超时时间必须大于0秒！");

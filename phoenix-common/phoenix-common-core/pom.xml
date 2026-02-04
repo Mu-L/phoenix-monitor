@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 监控父项目，为监控公共模父项目 -->
+    <!-- 监控父项目，为监控公共模块父项目 -->
     <parent>
         <artifactId>phoenix-common</artifactId>
         <groupId>com.gitee.pifeng</groupId>
@@ -129,6 +129,11 @@
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcutil-jdk18on</artifactId>
+        </dependency>
+        <!-- 本地缓存caffeine依赖 -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
         </dependency>
     </dependencies>
 
