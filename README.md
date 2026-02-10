@@ -203,7 +203,7 @@ bash -c "$(curl -fsSL https://gitee.com/monitoring-platform/phoenix/raw/master/d
 安装完成后，请执行以下操作：  
 1.从源码目录 **phoenix/phoenix-server/src/main/resources/** 中复制 **application-prod.yml** 文件；  
 2.将其放置于服务器路径 **/data/phoenix/phoenix-server/config/**；  
-3.编辑该文件，把电子邮件配置正确配置好；  
+3.编辑该文件，只保留电子邮件配置，其它配置全部删掉，并把电子邮件配置正确配置好；  
 4.重启 **phoenix-server** 容器。
 
 #### 3.2.配置phoenix-agent
