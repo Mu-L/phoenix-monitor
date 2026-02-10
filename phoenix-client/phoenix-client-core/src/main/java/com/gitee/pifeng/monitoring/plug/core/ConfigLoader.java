@@ -1,6 +1,5 @@
 package com.gitee.pifeng.monitoring.plug.core;
 
-import com.gitee.pifeng.monitoring.common.constant.CommFrameworkTypeEnums;
 import com.gitee.pifeng.monitoring.common.constant.EndpointTypeEnums;
 import com.gitee.pifeng.monitoring.common.constant.LanguageTypeConstants;
 import com.gitee.pifeng.monitoring.common.constant.SecurerEnums;
@@ -347,27 +346,16 @@ public class ConfigLoader {
             throws NotFoundConfigParamException, ErrorConfigParamException {
         // 与通信相关的监控属性
         MonitoringCommProperties monitoringCommProperties;
-        // 与服务端或者代理端通信的通信框架类型
-        String commFrameworkType;
         if (hasMonitoringProperties) {
             monitoringCommProperties = monitoringProperties.getComm() == null ? new MonitoringCommProperties() : monitoringProperties.getComm();
-            CommFrameworkTypeEnums commFrameworkTypeEnum = monitoringCommProperties.getCommFrameworkType();
-            commFrameworkType = commFrameworkTypeEnum == null ? null : commFrameworkTypeEnum.getName();
-            // 没有配置通信框架类型 或者 通信框架是apacheHttpComponents
-            if (StringUtils.isBlank(commFrameworkType) || StringUtils.equalsIgnoreCase(commFrameworkType, CommFrameworkTypeEnums.APACHE_HTTP_COMPONENTS.getName())) {
-                monitoringCommProperties.setCommFrameworkType(CommFrameworkTypeEnums.APACHE_HTTP_COMPONENTS);
-                MonitoringCommHttpProperties monitoringCommHttpProperties = wrapMonitoringCommHttpProperties(properties, monitoringProperties, true);
-                monitoringCommProperties.setHttp(monitoringCommHttpProperties);
-            }
+            // 封装与HTTP通信相关的监控属性
+            MonitoringCommHttpProperties monitoringCommHttpProperties = wrapMonitoringCommHttpProperties(properties, monitoringProperties, true);
+            monitoringCommProperties.setHttp(monitoringCommHttpProperties);
         } else {
             monitoringCommProperties = new MonitoringCommProperties();
-            commFrameworkType = StringUtils.trimToNull(properties.getProperty("monitoring.comm.comm-framework-type"));
-            // 没有配置通信框架类型 或者 通信框架是apacheHttpComponents
-            if (StringUtils.isBlank(commFrameworkType) || StringUtils.equalsIgnoreCase(commFrameworkType, CommFrameworkTypeEnums.APACHE_HTTP_COMPONENTS.getName())) {
-                monitoringCommProperties.setCommFrameworkType(CommFrameworkTypeEnums.APACHE_HTTP_COMPONENTS);
-                MonitoringCommHttpProperties monitoringCommHttpProperties = wrapMonitoringCommHttpProperties(properties, monitoringProperties, false);
-                monitoringCommProperties.setHttp(monitoringCommHttpProperties);
-            }
+            // 封装与HTTP通信相关的监控属性
+            MonitoringCommHttpProperties monitoringCommHttpProperties = wrapMonitoringCommHttpProperties(properties, monitoringProperties, false);
+            monitoringCommProperties.setHttp(monitoringCommHttpProperties);
         }
         MONITORING_PROPERTIES.setComm(monitoringCommProperties);
     }

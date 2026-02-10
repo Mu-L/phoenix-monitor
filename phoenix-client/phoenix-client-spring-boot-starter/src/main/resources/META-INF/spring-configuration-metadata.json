@@ -83,12 +83,6 @@
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.pifeng.monitoring.common.property.client.MonitoringCommProperties",
-      "name": "phoenix.monitoring.comm.comm-framework-type",
-      "description": "缺省[与服务端 或者 代理端通信的通信框架类型，默认：apacheHttpComponents].",
-      "type": "com.gitee.pifeng.monitoring.common.constant.CommFrameworkTypeEnums"
-    },
-    {
       "sourceType": "com.gitee.pifeng.monitoring.common.property.client.MonitoringCommHttpProperties",
       "name": "phoenix.monitoring.comm.http.url",
       "description": "必填[http通信url].",

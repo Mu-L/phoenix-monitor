@@ -1,6 +1,5 @@
 package com.gitee.pifeng.monitoring.common.property.client;
 
-import com.gitee.pifeng.monitoring.common.constant.CommFrameworkTypeEnums;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -19,11 +18,6 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class MonitoringCommProperties {
-
-    /**
-     * 与服务端通信的通信框架类型
-     */
-    private CommFrameworkTypeEnums commFrameworkType;
 
     /**
      * 与HTTP通信相关的监控属性
