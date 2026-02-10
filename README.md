@@ -88,6 +88,7 @@
   phoenix（监控平台父工程）  
   ├── phoenix-common（监控公共模块父工程）  
   │ ├── phoenix-common-core（监控核心公共模块）  
+  │ ├── phoenix-common-netty（监控Netty公共模块）  
   │ └── phoenix-common-web（监控WEB公共模块）  
   ├── phoenix-client（监控客户端父工程）  
   │ ├── phoenix-client-core（监控客户端）  
@@ -100,7 +101,7 @@
   └── mvn（Maven打包脚本）
 
   phoenix：监控平台父工程，管理平台的依赖、构建、插件等；  
-  phoenix-common：监控公共模块，提供平台所有的公共代码，包含一个监控核心公共模块（phoenix-common-core）和一个监控WEB公共模块（phoenix-common-web）；  
+  phoenix-common：监控公共模块，提供平台所有的公共代码，包含一个监控核心公共模块（phoenix-common-core）和一个监控Netty公共模块（phoenix-common-netty）、一个监控WEB公共模块（phoenix-common-web）；  
   phoenix-client：监控客户端，用于集成到Java应用程序中实现业务埋点和Java应用程序监控信息收集，包含一个通用模块（phoenix-client-core）和与springboot集成的starter（phoenix-client-spring-boot-starter）、与springmvc集成的integrator（phoenix-client-spring-mvc-integrator）两个拓展模块；  
   phoenix-agent：监控代理端，用于收集服务器信息、Docker信息，汇聚、转发来自监控客户端的信息，若部署在跳板机上可打通网络壁垒；  
   phoenix-server：监控服务端，是监控平台的核心模块，用于汇聚、分析监控信息，在发现异常时实时推送告警信息；  
@@ -210,7 +211,7 @@ bash -c "$(curl -fsSL https://gitee.com/monitoring-platform/phoenix/raw/master/d
 安装完成后，请执行以下操作：  
 1.从源码目录 **phoenix/phoenix-agent/src/main/resources/** 中复制 **monitoring-prod.properties** 文件；  
 2.将其放置于服务器路径 **/data/phoenix/phoenix-agent/config/**；  
-3.编辑该文件，将 **monitoring.comm.http.url** 的值配置为 http://phoenix-server主机IP:16000/phoenix-server；  
+3.编辑该文件，将 **monitoring.comm.http.url** 的值配置为 **http://phoenix-server主机IP:16000/phoenix-server**；  
 4.重启 **phoenix-agent** 容器。
 
 更多使用方式，请参考 **使用说明**。
