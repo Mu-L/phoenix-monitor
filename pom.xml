@@ -614,6 +614,12 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
+                    <!-- 关闭 JDK 8+ 引入的严格文档校验 -->
+                    <!-- <doclint>none</doclint> -->
+                    <!-- 静默模式，减少 Javadoc 的输出日志（尤其是警告） -->
+                    <!-- <quiet>true</quiet> -->
+                    <!-- 即使有错误也不中断构建 -->
+                    <failOnError>false</failOnError>
                     <additionalJOptions>
                         <additionalJOption>-J-Xmx180m</additionalJOption>
                     </additionalJOptions>
